@@ -1,0 +1,31 @@
+#include <iostream>
+#include <vector>
+#include <limits>
+
+int main() {
+    int Kolvo_komnat;
+    std::cout << "Enter number of rooms: ";
+    std::cin >> Kolvo_komnat;
+    int Kolvo_telefonov;
+    std::cout << "Enter the number of phones: ";
+    std::cin >> Kolvo_telefonov;
+    std::vector<int> komnati_s_telefonami(Kolvo_telefonov);
+    std::cout << "Enter the numbers of the rooms in which the telephones will be installed: ";
+    for (int i = 0; i < Kolvo_telefonov; ++i) {
+        std::cin >> komnati_s_telefonami[i];
+    }
+    int Nyznaia_Komnata = -1;
+    int min_dlina = std::numeric_limits<int>::max();
+    for (int kom_komnata = 1; kom_komnata <= Kolvo_komnat; ++kom_komnata) {
+        int obshaia_dlina = 0;
+        for (int room : komnati_s_telefonami) {
+            obshaia_dlina += abs(kom_komnata - room);
+        }
+        if (obshaia_dlina < min_dlina) {
+            min_dlina = obshaia_dlina;
+            Nyznaia_Komnata = kom_komnata;
+        }
+    }
+    std::cout << "the best room : " << Nyznaia_Komnata<<" and lenght " << min_dlina << std::endl;
+    return 0;
+}

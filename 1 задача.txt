@@ -1,0 +1,35 @@
+#include <iostream>
+#include <math.h>
+
+int main()
+{
+	double shirina_k;
+	double dlina_k;
+	double visota_k;
+	double shirina_o;
+	double dlina_o;
+
+	std::cout << "Vvedite shiriny komnati ";
+	std::cin >> shirina_k;
+	std::cout << "Vvedite dliny komnati";
+	std::cin >> dlina_k;
+	std::cout << "Vvedite visoty komnati";
+	std::cin >> visota_k;
+	std::cout << "Vvedite shiriny oboev";
+	std::cin >> shirina_o;
+	std::cout << "Vvedite dliny oboev";
+	std::cin >> dlina_o;
+
+	double  SpoverhSteni = (2 * (dlina_k * visota_k + shirina_k * visota_k));
+	double kv_rylona = dlina_o * shirina_o;
+	double polos = floor(dlina_o / visota_k);
+	double d_polos = polos * shirina_o;
+	double Kol_Rulonov = (ceil((dlina_k + shirina_k) * 2 / d_polos));
+	double obsh_s = kv_rylona * Kol_Rulonov;
+	double prosent_ostatka = (1 - (SpoverhSteni / obsh_s)) * 100;
+
+	std::cout << "neobhodimo " << Kol_Rulonov << " rulonov" << "\n";
+	std::cout << " Prosent ostatka " << prosent_ostatka << " % ";
+
+	return 0;
+}
