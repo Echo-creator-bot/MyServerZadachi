@@ -1,0 +1,50 @@
+#include<iostream>
+#include<vector>
+#include<cstdlib>
+#include<cstring>
+#include<ctype.h>
+#include<stdlib.h>
+#include<string>
+using namespace std;
+int main()
+{
+    string s,n="1";
+    int i,k=0;
+    cout << "Vvedite stroku" << endl;
+    getline(cin,s);
+    vector<char> vec;
+    for (i = 0; i<s.size();i++) {
+        if (isdigit(s[i])) {
+            vec.push_back(s[i]);
+        }
+    }
+    if (vec.size()==0) {
+        cout<<"V stroke net cifr"<<endl;
+        return 0;
+    }
+    while (k!=n.size()) {
+        cout<< "Vvedite nomer cifri" << endl;
+        k=0;
+        getline(cin,n);
+        for (i=0;i<n.size();i++) {
+            if (isdigit(n[i])) {
+                k++;
+            }
+	    }
+	    if (k!=n.size()) {
+	        cout<<"Naideno ne chislo"<<endl;   
+	    }
+	    if (k==n.size()) {
+	        if (stoi(n)>vec.size()) {
+	            cout<<"Nomer ne mojet bit bolshe kolichestva cifr"<<endl;
+	            k=0;
+	        }
+	        if (stoi(n)<1) {
+	            cout<<"Nomer ne mojet bit menshe 1"<<endl;
+	            k=0;
+	        }
+	    }
+    }
+    cout<<"Cifroi nomer "<<stoi(n)<<" yavlaetsa " <<vec[stoi(n)-1]<<endl;
+    return 0;
+}
